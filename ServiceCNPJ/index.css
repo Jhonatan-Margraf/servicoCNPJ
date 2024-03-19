@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center; /* Centraliza na vertical */
+    height: 100vh; /* Faz o corpo da página ocupar toda a altura da tela */
+    background-color: #f2f2f2; /* Cor de fundo da página */
+}
+
+.form-container {
+    background-color: #fff; /* Cor de fundo do formulário */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Borda arredondada */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centraliza os elementos dentro do formulário */
+}
+
+.semborda input{
+    border: none; /* Remove a borda */
+        outline: none; /* Remove o contorno ao focar */
+        box-shadow: none; /* Remove qualquer sombra */
+        /* Adicione outros estilos conforme necessário */
+}
+
+/* Estilo para o botão */
+input[type="button"] {
+    margin-top: 10px; /* Espaçamento acima do botão */
+    padding: 10px 20px; /* Adapte conforme necessário */
+    background-color: #007bff; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo quando o botão é hover (passagem do mouse por cima) */
+input[type="button"]:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo da lista */
+
+    h1 {
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+    }
+
+    @media screen and (max-width: 600px) {
+        .form-container {
+            padding: 10px;
+            margin-top: 100px;
+        }
+    }
+
+  

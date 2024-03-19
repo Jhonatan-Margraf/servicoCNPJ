@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <label title="Número do CNPJ">Número do CNPJ</label>
+        <input type="text" name="numero_CNPJ" id="numero_CNPJ" />
+        <input type="button" value="Pesquisar endereço no receitaws" onclick="chamarServicoreceitaws()">
+
+        <div class="semborda">
+        <h1>Informações da Empresa</h1>
+        <ul>
+            <li><span class="label">Nome:</span> <input type="text" id="nome"></li>
+            <li><span class="label">Fantasia:</span> <input type="text" id="fantasia"></li>
+            <li><span class="label">Tipo:</span> <input type="text" id="tipo"></li>
+            <li><span class="label">Situação:</span> <input type="text" id="situacao"></li>
+            <li><span class="label">Abertura:</span> <input type="text" id="abertura"></li>
+            <li><span class="label">CNPJ:</span> <input type="text" id="cnpj"></li>
+            <li><span class="label">UF:</span> <input type="text" id="uf"></li>
+            <li><span class="label">Município:</span> <input type="text" id="municipio"></li>
+            <li><span class="label">Bairro:</span> <input type="text" id="bairro"></li>
+            <li><span class="label">Logradouro:</span> <input type="text" id="logradouro"></li>
+            <li><span class="label">Número:</span> <input type="text" id="numero"></li>
+            <li><span class="label">CEP:</span> <input type="text" id="cep"></li>
+            <li><span class="label">Natureza Jurídica:</span> <input type="text" id="natureza_juridica"></li>
+            <li><span class="label">Porte:</span> <input type="text" id="porte"></li>
+            <li><span class="label">Capital Social:</span> <input type="text" id="capital_social"></li>
+            <!-- Adicione mais informações conforme necessário -->
+        </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+    function chamarServicoreceitaws() {
+        CNPJ_digitado = document.getElementById('numero_CNPJ')
+
+        //alert("Olá, Você clicou no botão "Pesquisar" e o método foi invocado)
+        //alert("O número do CNPJ digitado foi:" + CNPJ_digitado.value)
+
+        CNPJ_digitado = document.getElementById('numero_CNPJ').value;
+
+        const urlreceitaws = 'https://cors-anywhere.herokuapp.com/https://receitaws.com.br/v1/cnpj/' + CNPJ_digitado;
+
+        const options = { method: 'GET', headers: { Accept: 'application/json' } };
+
+        //alert(urlreceitaws);
+
+        fetch(urlreceitaws).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert('Resposta não é OK');
+            }
+        }
+        )
+            .then((data) => {
+                //alert(data);
+                console.log(data);
+                document.getElementById("nome").value = data.nome;
+                document.getElementById("fantasia").value = data.fantasia;
+                document.getElementById("tipo").value = data.tipo;
+                document.getElementById("situacao").value = data.situacao;
+                document.getElementById("abertura").value = data.abertura;
+                document.getElementById("cnpj").value = data.cnpj;
+                document.getElementById("uf").value = data.uf;
+                document.getElementById("municipio").value = data.municipio;
+                document.getElementById("bairro").value = data.bairro;
+                document.getElementById("logradouro").value = data.logradouro;
+                document.getElementById("numero").value = data.numero;
+                document.getElementById("cep").value = data.cep;
+                document.getElementById("natureza_juridica").value = data.natureza_juridica;
+                document.getElementById("porte").value = data.porte;
+                document.getElementById("capital_social").value = data.capital_social;
+            })
+            .catch(error => {
+                alert(" ALERT: Erro ao requisitar serviço em nuvem!");
+                console.error("Erro ao requisitar serviço em nuvem!");
+            });
+    }
+</script>
